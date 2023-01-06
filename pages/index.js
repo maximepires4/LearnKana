@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react';
+import supabase from '../lib/supabase'
 
 export default function Home() {
   const [search, setSearch] = useState(null)
@@ -7,8 +8,13 @@ export default function Home() {
 
   async function fetchData(keyword) {
     setSearch(false)
-    const response = await fetch(`/api/search${keyword ? `/${keyword}` : ''}`)
-    const data = await response.json()
+    const {data, error} = await supabase.from('pathologies').select('*').ilike('name', `%${keyword}%`)
+
+    if(error) {
+      console.log(error)
+      setSearch([])
+    }
+
     if (!data) {
       setSearch([])
     } else {
@@ -80,7 +86,7 @@ export default function Home() {
                                   <SearchItem name={item.name} information={item.information} />
                                 ))
                                 :
-                                <p>No photology found</p>
+                                <p>No pathology found</p>
                       }
                           </div>
                           :

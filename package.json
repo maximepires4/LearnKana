@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.2.3",
     "flowbite": "^1.6.0",
     "flowbite-react": "^0.3.7",
     "next": "latest",
