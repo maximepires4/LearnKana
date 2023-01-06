@@ -7,7 +7,7 @@ export default function Home() {
 
   async function fetchData(keyword) {
     setSearch(false)
-    const response = await fetch(`http://localhost:3000/api/search${keyword ? `/${keyword}` : ''}`)
+    const response = await fetch(`/api/search${keyword ? `/${keyword}` : ''}`)
     const data = await response.json()
     if (!data) {
       setSearch([])
