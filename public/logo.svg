@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1000.0px"
+   height="1000.0px"
+   viewBox="0 0 1000.0 1000.0"
+   version="1.1"
+   id="SVGRoot"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview92"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="0.75277076"
+     inkscape:cx="322.80744"
+     inkscape:cy="486.20379"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:lockguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid98" />
+  </sodipodi:namedview>
+  <defs
+     id="defs87">
+    <rect
+       x="-1.0833999"
+       y="0.64455077"
+       width="1001.1724"
+       height="999.48928"
+       id="rect1966" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:1.00059;stroke-dasharray:none"
+       id="path8622"
+       sodipodi:type="arc"
+       sodipodi:cx="500"
+       sodipodi:cy="500"
+       sodipodi:rx="500"
+       sodipodi:ry="500"
+       sodipodi:start="4.4629572"
+       sodipodi:end="4.3866794"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 376.57332,15.473577 A 500,500 0 0 1 982.08479,367.35667 500,500 0 0 1 641.81175,979.46786 500,500 0 0 1 23.323425,650.9286 500,500 0 0 1 340.00943,26.288044" />
+    <path
+       style="fill:#c70025;fill-opacity:1;stroke-width:0.750772;stroke-dasharray:none"
+       id="path397"
+       sodipodi:type="arc"
+       sodipodi:cx="500"
+       sodipodi:cy="500"
+       sodipodi:rx="375"
+       sodipodi:ry="375"
+       sodipodi:start="4.4629572"
+       sodipodi:end="4.3866794"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 407.42999,136.60518 A 375,375 0 0 1 861.56359,400.5175 375,375 0 0 1 606.35881,859.60089 375,375 0 0 1 142.49257,613.19645 375,375 0 0 1 380.00707,144.71603" />
+    <text
+       xml:space="preserve"
+       id="text1964"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:0.85;font-family:'Fira Sans';-inkscape-font-specification:'Fira Sans';letter-spacing:-3.59173px;white-space:pre;shape-inside:url(#rect1966);fill:#ffffff;fill-opacity:1;stroke:none"
+       transform="matrix(7.1513099,0,0,7.1513133,234.82835,237.82429)"><tspan
+         x="-1.0839844"
+         y="32.844532"
+         id="tspan8652"><tspan
+           style="font-weight:bold"
+           id="tspan8650">勉強
+</tspan></tspan><tspan
+         x="-1.0839844"
+         y="70.877865"
+         id="tspan8656"><tspan
+           style="font-weight:bold"
+           id="tspan8654">仮名
+</tspan></tspan></text>
+  </g>
+</svg>
