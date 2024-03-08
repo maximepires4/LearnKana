@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Input from '../components/Input'
 import KanaList from '../components/KanaList'
+import { toHiragana, toKatakana } from 'wanakana'
 
 const hiraganaArray = [
   'あ', 'い', 'う', 'え', 'お',
@@ -93,57 +93,47 @@ const katakanaOther = [
   'ー'
 ]
 
-export default function Home({ defaultKana }) {
+export default function Home() {
 
-  const [kana, setKana] = useState(defaultKana)
   const [learnList, setLearnList] = useState(hiraganaArray.filter((item) => item !== null))
   const [tab, setTab] = useState("hiragana")
-  const [reset, setReset] = useState(false)
+  const [tabVisible, setTabVisible] = useState(true)
+  const [darkMode, setDarkMode] = useState(true)
 
-  //useEffect(() => {
-  //  setLearnList(array)
-  //  setReset(!reset)
-  //}, [tab])
+  const changeTab = (tab) => {
+    setTab(tab)
+    const translateFunc = tab === "hiragana" ? toHiragana : toKatakana
 
-  useEffect(() => {
-    if (learnList.length === 0)
-      setKana(null)
-    else
-      setKana(learnList[Math.floor(Math.random() * learnList.length)])
-
-    console.log(learnList)
-  }, [learnList])
-
-  const learnMode = (answer) => {
-    if (answer) setLearnList(learnList.filter((item) => item !== kana))
-    else if (answer === null) {
-      setKana(learnList.filter((item) => item !== kana)[Math.floor(Math.random() * learnList.length)])
-    }
+    setLearnList(learnList.filter((item) => item !== null).map((item) => translateFunc(item)))
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>LearnKana</title>
-        <link rel="icon" href="/logo.svg" />
-      </Head>
-
-      <main className="flex w-full flex-1 flex-col items-center px-10 text-center">
+    <main className={`flex flex-col min-h-screen py-2 ${darkMode && 'dark bg-black'}`}>
+      <div className="flex w-full flex-col items-center px-10 text-center dark:bg-black">
         <div>
-          <h1 className="text-6xl font-bold mt-20">
+          <h1 className="text-6xl font-bold mt-20 dark:text-white">
             Learn<span className='text-red-700'>Kana</span>
           </h1>
         </div>
+        <Input learnList={learnList} />
+      </div>
 
-        <Input kana={kana} callback={learnMode} reset={reset} />
+      <div className="fixed top-0 right-0 m-4">
+        <button onClick={() => setDarkMode(!darkMode)} className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 m-auto">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+          </svg>
+        </button>
+      </div>
 
-        <aside className='fixed top-0 left-0 z-40 h-screen overflow-y-auto border-r-2 bg-slate-50 sm:translate-x-0'>
-          <div className='flex'>
+      <aside className='fixed top-0 left-0 flex'>
+        <div className={'h-screen overflow-y-auto border-r-2 dark:border-gray-800 bg-zinc-50 dark:bg-black transition-transform ' + (tabVisible ? 'translate-x-0' : '-translate-x-full')}>
+          <div className='sticky z-50 top-0 items-center bg-zinc-50 dark:bg-black'>
             <ul className="flex-grow flex justify-between text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-              <li onClick={() => setTab("hiragana")} className={"flex-grow cursor-pointer p-4 border-b-2 " + (tab === "hiragana" ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500" : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300")}>
+              <li onClick={() => changeTab("hiragana")} className={"flex-grow cursor-pointer p-4 border-b-2 text-xl " + (tab === "hiragana" ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500" : "hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 dark:border-gray-800")}>
                 <span className={"w-5 h-5 mr-2 " + (tab === "hiragana" ? "text-blue-600 dark:text-blue-500" : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300")}>ん</span>Hiragana
               </li>
-              <li onClick={() => setTab("katakana")} className={"flex-grow cursor-pointer p-4 border-b-2 " + (tab === "katakana" ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500" : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300")}>
+              <li onClick={() => changeTab("katakana")} className={"flex-grow cursor-pointer p-4 border-b-2 text-xl " + (tab === "katakana" ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500" : "hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 dark:border-gray-800")}>
                 <span className={"w-5 h-5 mr-2 " + (tab === "katakana" ? "text-blue-600 dark:text-blue-500" : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300")}>ン</span>Katakana
               </li>
             </ul>
@@ -153,17 +143,21 @@ export default function Home({ defaultKana }) {
             <KanaList title="Dakuon" array={tab === "hiragana" ? hiraganaDakuonArray : katakanaDakuonArray} learnList={learnList} setLearnList={setLearnList} columns={5} />
             <KanaList title="Combo" array={tab === "hiragana" ? hiraganaComboArray : katakanaComboArray} learnList={learnList} setLearnList={setLearnList} columns={3} />
           </div>
-        </aside>
-      </main>
-    </div>
+        </div>
+        <button onClick={() => setTabVisible(!tabVisible)} className={'w-10 h-10 rounded-full m-2 bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-gray-700 ' + (tabVisible ? '' : 'fixed left-0')}>
+          {
+            tabVisible ?
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 m-auto">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+              :
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 m-auto">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+
+          }
+        </button>
+      </aside>
+    </main>
   )
-}
-
-export async function getStaticProps() {
-
-  return {
-    props: {
-      defaultKana: hiraganaArray.filter((item) => item !== null)[Math.floor(Math.random() * hiraganaArray.filter((item) => item !== null).length)]
-    }
-  }
 }

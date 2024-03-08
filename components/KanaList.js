@@ -15,7 +15,6 @@ export default function KanaList({ title, array, learnList, setLearnList, column
     }
 
     const setAll = (active) => {
-        console.log(allActive)
         setAllActive(active)
 
         if (active) {
@@ -23,7 +22,7 @@ export default function KanaList({ title, array, learnList, setLearnList, column
         } else {
             setLearnList(learnList.filter(item => !array.includes(item)))
         }
-    
+
     }
 
     useEffect(() => {
@@ -39,12 +38,13 @@ export default function KanaList({ title, array, learnList, setLearnList, column
     }, [learnList])
 
     return (
-        <div className="flex flex-col mx-6 pb-4 border-b-4">
+        <div className="flex flex-col mx-6 mb-4 pb-4 border-b-4 dark:border-gray-800">
             <div className="flex items-center justify-between my-6">
-                <h1 className="text-2xl font-bold text-left">
+                <h1 className="text-2xl font-bold text-left dark:text-white">
                     {title}
                 </h1>
-                <input checked={checkbox} onChange={(event) => setAll(event.target.checked)} type="checkbox" className="my-auto w-8 h-8 cursor-pointer text-slate-500 bg-white border-2 border-slate-500 focus:outline-none focus:ring-transparent "/>
+                <input checked={checkbox} onChange={(event) => setAll(event.target.checked)} type="checkbox"
+                    className="app my-auto w-6 h-6 cursor-pointer text-slate-500 bg-gray-100 border-gray-300 rounded dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600 focus:ring-transparent" />
             </div>
             {
                 array.reduce((acc, item, index) => {
@@ -58,7 +58,7 @@ export default function KanaList({ title, array, learnList, setLearnList, column
                     <div key={index} className='flex flex-wrap justify-center'>{
                         grouped.map((kana, index) => (
                             <div className="m-1" key={index}>
-                                <KanaCard kana={kana} forceActive={allActive} callback={changeLearnList}/>
+                                <KanaCard kana={kana} forceActive={allActive} callback={changeLearnList} />
                             </div>
                         ))}
                     </div>
