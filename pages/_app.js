@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
         <>
             <Head>
                 <title>LearnKana</title>
-                <link rel="icon" href="/logo.svg" />
+                <link rel="icon" href="/learnkana/logo.svg" />
             </Head>
             <Component {...pageProps} />
         </>
