@@ -135,26 +135,21 @@ export default function Home({ defaultKana }) {
           </h1>
         </div>
 
-        <div className="mt-6">{/*border-b border-gray-200 dark:border-gray-700*/}
-          <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-            <li className="mr-2">
-              <button onClick={() => setTab("hiragana")} className={"inline-flex p-4 border-b-2 rounded-t-lg group " + (tab === "hiragana" ? "text-blue-600 border-blue-600 active dark:text-blue-500 dark:border-blue-500" : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300")}>
-                <span className={"w-5 h-5 mr-2 " + (tab === "hiragana" ? "text-blue-600 dark:text-blue-500" : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300")}>ん</span>Hiragana
-              </button>
-            </li>
-            <li className="mr-2">
-              <button onClick={() => setTab("katakana")} className={"inline-flex p-4 border-b-2 rounded-t-lg group " + (tab === "katakana" ? "text-blue-600 border-blue-600 active dark:text-blue-500 dark:border-blue-500" : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300")} aria-current="page">
-                <span className={"w-5 h-5 mr-2 " + (tab === "katakana" ? "text-blue-600 dark:text-blue-500" : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300")}>ン</span>Katakana
-              </button>
-            </li>
-          </ul>
-        </div>
-
         <Input kana={kana} callback={learnMode} reset={reset} />
 
         <aside className='fixed top-0 left-0 z-40 h-screen overflow-y-auto border-r-2 bg-slate-50 sm:translate-x-0'>
+          <div className='flex'>
+            <ul className="flex-grow flex justify-between text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+              <li onClick={() => setTab("hiragana")} className={"flex-grow cursor-pointer p-4 border-b-2 " + (tab === "hiragana" ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500" : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300")}>
+                <span className={"w-5 h-5 mr-2 " + (tab === "hiragana" ? "text-blue-600 dark:text-blue-500" : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300")}>ん</span>Hiragana
+              </li>
+              <li onClick={() => setTab("katakana")} className={"flex-grow cursor-pointer p-4 border-b-2 " + (tab === "katakana" ? "text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500" : "border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300")}>
+                <span className={"w-5 h-5 mr-2 " + (tab === "katakana" ? "text-blue-600 dark:text-blue-500" : "text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300")}>ン</span>Katakana
+              </li>
+            </ul>
+          </div>
           <div className="justify-center">
-            <KanaList title={tab === "hiragana" ? "Hiragana" : "Katakana"} array={tab === "hiragana" ? hiraganaArray : katakanaArray} learnList={learnList} setLearnList={setLearnList} columns={5} defaultActive/>
+            <KanaList title={tab === "hiragana" ? "Hiragana" : "Katakana"} array={tab === "hiragana" ? hiraganaArray : katakanaArray} learnList={learnList} setLearnList={setLearnList} columns={5} defaultActive />
             <KanaList title="Dakuon" array={tab === "hiragana" ? hiraganaDakuonArray : katakanaDakuonArray} learnList={learnList} setLearnList={setLearnList} columns={5} />
             <KanaList title="Combo" array={tab === "hiragana" ? hiraganaComboArray : katakanaComboArray} learnList={learnList} setLearnList={setLearnList} columns={3} />
           </div>

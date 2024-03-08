@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toRomaji } from 'wanakana'
 
 export default function KanaCard({ kana, forceActive, callback }) {

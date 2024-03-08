@@ -14,20 +14,27 @@ export default function KanaList({ title, array, learnList, setLearnList, column
         }
     }
 
+    const setAll = (active) => {
+        console.log(allActive)
+        setAllActive(active)
+
+        if (active) {
+            setLearnList(learnList.concat(array.filter(item => item !== null && !learnList.includes(item))))
+        } else {
+            setLearnList(learnList.filter(item => !array.includes(item)))
+        }
+    
+    }
+
     useEffect(() => {
         setCheckbox(allActive)
     }, [allActive])
 
     useEffect(() => {
-        console.log(checkbox)
-    }, [checkbox])
-
-    useEffect(() => {
-        if (array.every(item => learnList.includes(item))) {
+        if (array.every(item => item === null | learnList.includes(item))) {
             setCheckbox(true)
         } else {
             setCheckbox(false)
-            console.log("devrait s'éteindre")
         }
     }, [learnList])
 
@@ -37,7 +44,7 @@ export default function KanaList({ title, array, learnList, setLearnList, column
                 <h1 className="text-2xl font-bold text-left">
                     {title}
                 </h1>
-                <input defaultChecked={checkbox} onClick={() => setAllActive(!allActive)} type="checkbox" className="my-auto w-8 h-8 cursor-pointer text-slate-500 bg-white border-2 border-slate-500 focus:outline-none focus:ring-transparent "/>
+                <input checked={checkbox} onChange={(event) => setAll(event.target.checked)} type="checkbox" className="my-auto w-8 h-8 cursor-pointer text-slate-500 bg-white border-2 border-slate-500 focus:outline-none focus:ring-transparent "/>
             </div>
             {
                 array.reduce((acc, item, index) => {
