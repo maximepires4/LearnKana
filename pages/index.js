@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Input from '../components/Input'
 import KanaList from '../components/KanaList'
 import { toHiragana, toKatakana } from 'wanakana'
+import Link from 'next/link'
+import Image from 'next/image'
 
 const hiraganaArray = [
   'あ', 'い', 'う', 'え', 'お',
@@ -126,7 +128,7 @@ export default function Home() {
         </button>
       </div>
 
-      <aside className='fixed top-0 left-0 flex'>
+      <aside className='fixed z-40 top-0 left-0 flex'>
         <div className={'h-screen overflow-y-auto border-r-2 dark:border-gray-800 bg-zinc-50 dark:bg-black transition-transform ' + (tabVisible ? 'translate-x-0' : '-translate-x-full')}>
           <div className='sticky z-50 top-0 items-center bg-zinc-50 dark:bg-black'>
             <ul className="flex-grow flex justify-between text-sm font-medium text-center text-gray-500 dark:text-gray-400">
@@ -158,6 +160,12 @@ export default function Home() {
           }
         </button>
       </aside>
+
+      <footer className="fixed bottom-0 flex justify-center items-center w-full h-24 border-t dark:text-white dark:border-gray-800">
+        Created by Maxime Pires
+        <Link className='ml-1 underline text-blue-500' href="https://github.com/maximepires4">Github</Link>
+        <Link className='ml-1 underline text-blue-500' href="https://linkedin.com/maximepires">Linkedin</Link>
+      </footer>
     </main>
   )
 }
