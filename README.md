@@ -2,6 +2,8 @@
 
 LearnKana is a simple web application that helps you learn the Japanese Kana (Hiragana and Katakana) characters. It is built using Next.js and Tailwind CSS. Some components have been inspired from Flowbite and some icons are from Heroicons.
 
+The website is available here: https://maximepires4.github.io/LearnKana/
+
 ## Features
 
 - Select which characters to learn
@@ -9,6 +11,8 @@ LearnKana is a simple web application that helps you learn the Japanese Kana (Hi
 - Reset the list by clicking the prompt at the end of your session or by selecting new characters
 
 ## Installation
+
+The project is optimised for GitHub pages, so the endpoint will be at `/learnkana`
 
 First, clone the repository:
 
@@ -32,4 +36,4 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000/learnkana) with your browser to see the result.
